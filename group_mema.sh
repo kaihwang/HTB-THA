@@ -7,7 +7,7 @@ data='/data/backed_up/kahwang/HTB/fMRIprep/Results'
 rm -rf /data/backed_up/kahwang/HTB/fMRIprep/Group/
 mkdir /data/backed_up/kahwang/HTB/fMRIprep/Group/
 
-for contrast in alltask Dimension Load; do 
+for contrast in alltask Dimension Load D2-R8 Abstraction Response; do 
 
 	echo "cd /data/backed_up/kahwang/HTB/fMRIprep/Group 
 	3dMEMA -prefix /data/backed_up/kahwang/HTB/fMRIprep/Group/${contrast}_groupMEMA \\
@@ -31,6 +31,10 @@ for contrast in alltask Dimension Load; do
 	. /data/backed_up/kahwang/HTB/fMRIprep/Group/groupstat_${contrast}.sh
 
 done
+3dMean -prefix /data/backed_up/kahwang/HTB/fMRIprep/Group/FIR_R4.nii.gz ${data}/sub-*/R4_FIR_MNI.nii.gz
+3dMean -prefix /data/backed_up/kahwang/HTB/fMRIprep/Group/FIR_R8.nii.gz ${data}/sub-*/R8_FIR_MNI.nii.gz
+3dMean -prefix /data/backed_up/kahwang/HTB/fMRIprep/Group/FIR_D1.nii.gz ${data}/sub-*/D1_FIR_MNI.nii.gz
+3dMean -prefix /data/backed_up/kahwang/HTB/fMRIprep/Group/FIR_D2.nii.gz ${data}/sub-*/D2_FIR_MNI.nii.gz
 
 ln -s /data/backed_up/shared/standard/mni_icbm152_nlin_asym_09c/mni_icbm152_t1_tal_nlin_asym_09c.nii /data/backed_up/kahwang/HTB/fMRIprep/Group/mni.nii
 cd /data/backed_up/kahwang/HTB/fMRIprep/Group
